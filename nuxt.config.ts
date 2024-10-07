@@ -27,10 +27,10 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      MAIN_API_URL: process.env.VUE_APP_BASE_URL,
-      AI_BASE_URL: process.env.VUE_APP_AI_BASE_URL,
+      MAIN_API_URL: process.env.MAIN_API_URL,
+      AI_BASE_URL: process.env.AI_BASE_URL,
       AWS_REGION: process.env.VUE_APP_AWS_REGION,
       AWS_S3_IDENTITY_POOL_ID: process.env.VUE_APP_AWS_S3_IDENTITY_POOL_ID
-    }
-  }
+    },
+  },
 })

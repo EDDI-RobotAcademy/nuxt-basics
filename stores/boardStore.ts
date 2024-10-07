@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import axiosInstance from "../utility/axiosInstance";
+import axiosInstance, {createAxiosInstances} from "../utility/axiosInstance";
 
 export const useBoardStore = defineStore('boardStore', {
     state: () => ({
@@ -8,8 +8,10 @@ export const useBoardStore = defineStore('boardStore', {
 
     actions: {
         async requestBoardListToDjango() {
+            const { djangoAxiosInst } = createAxiosInstances();
+
             try {
-                const response = await axiosInstance.djangoAxiosInst.get('/board/list');
+                const response = await djangoAxiosInst.get('/board/list');
                 this.boards = response.data;
             } catch (error) {
                 console.error('게시글 목록을 불러오는 중 오류가 발생했습니다:', error);
