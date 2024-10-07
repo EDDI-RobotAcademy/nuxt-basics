@@ -1,16 +1,24 @@
-// '@' 는 프로젝트 최상위에서 src 의 경로입니다.
-import env from "@/env";
 import axios, { AxiosInstance } from "axios";
 
-const djangoAxiosInst: AxiosInstance = axios.create({
-    // baseURL: env.api.MAIN_API_URL,
-    baseURL: 'http://localhost:8000',
-    timeout: 2500,
-})
+let djangoAxiosInst: AxiosInstance | null = null;
+let fastapiAxiosInst: AxiosInstance | null = null;
 
-const fastapiAxiosInst: AxiosInstance = axios.create({
-    baseURL: env.api.AI_BASE_URL,
-    timeout: 2500,
-})
+export function createAxiosInstances() {
+    if (!djangoAxiosInst) {
+        const config = useRuntimeConfig();
+        djangoAxiosInst = axios.create({
+            baseURL: config.public.MAIN_API_URL,
+            timeout: 2500,
+        });
+    }
 
-export default { djangoAxiosInst, fastapiAxiosInst }
+    if (!fastapiAxiosInst) {
+        const config = useRuntimeConfig();
+        fastapiAxiosInst = axios.create({
+            baseURL: config.public.AI_BASE_URL,
+            timeout: 2500,
+        });
+    }
+
+    return { djangoAxiosInst, fastapiAxiosInst };
+}
