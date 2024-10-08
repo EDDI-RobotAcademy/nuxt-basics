@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted } from 'vue';
-import { useBoardStore } from '../../stores/boardStore';
+import { useBoardStore } from '../stores/boardStore';
 
 export default defineComponent({
     setup() {

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import axiosInstance, {createAxiosInstances} from "../utility/axiosInstance";
+import axiosInstance, {createAxiosInstances} from "../../utility/axiosInstance";
 
 export const useBoardStore = defineStore('boardStore', {
     state: () => ({
