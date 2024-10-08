@@ -3,6 +3,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
+  extends: ['./board/nuxt.config.ts'],
 
   css: [
     'vuetify/styles',
@@ -19,7 +20,11 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['vuetify-nuxt-module', '@pinia/nuxt'],
+  modules: [
+      'vuetify-nuxt-module',
+      '@pinia/nuxt',
+      '~/board/index.ts',
+  ],
 
   imports: {
     dirs: ['./stores']
